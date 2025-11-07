@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.Configure<AzureKevaultInfo>(builder.Configuration.GetSection("AzureKeyVaultInfo"));
 
 if (builder.Environment.IsProduction())
 {
     var azureKeyVaultInfo = builder.Configuration.GetSection("AzureKeyVaultInfo").Get<AzureKevaultInfo>();
+
     if (azureKeyVaultInfo is not null)
     {
         var vaultUri = new Uri(string.Format(azureKeyVaultInfo.VaultUri, azureKeyVaultInfo.VaultName));

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36623.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "orchestration", "orchestration", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{906861B9-6E64-45CB-8627-49C44E7E71EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1D788047-F67C-4A5F-B33E-7CD3422C04D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syac.Patient.Domain", "src\Syac.Patient.Domain\Syac.Patient.Domain.csproj", "{9972515A-4120-4397-B7AF-D297385D52CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9972515A-4120-4397-B7AF-D297385D52CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9972515A-4120-4397-B7AF-D297385D52CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9972515A-4120-4397-B7AF-D297385D52CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9972515A-4120-4397-B7AF-D297385D52CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9972515A-4120-4397-B7AF-D297385D52CC} = {906861B9-6E64-45CB-8627-49C44E7E71EC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1783FE4-95D2-4E1F-BF33-7330C06EB3E1}
+	EndGlobalSection
+EndGlobal
