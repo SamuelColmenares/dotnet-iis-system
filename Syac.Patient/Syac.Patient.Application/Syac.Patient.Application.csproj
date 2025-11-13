@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\Syac.Patient.Domain\Syac.Patient.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

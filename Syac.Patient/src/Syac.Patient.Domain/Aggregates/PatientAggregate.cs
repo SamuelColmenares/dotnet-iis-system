@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Syac.Patient.Domain.Abstractions;
+using Syac.Patient.Domain.Enums;
+using Syac.Patient.Domain.ValueObjects;
 
 namespace Syac.Patient.Domain.Aggregates;
 
-public class PatientAggregate
+public partial class PatientAggregate: AggregateRoot<Guid>
 {
-    public string Id { get; init; }
+    public Name? Name { get; init; }
 
-    public string FirstName { get; init; }
-    public string LastName { get; init; }
+    public Document Document { get; init; } 
 
-    public int MyProperty { get; set; }
+    public DateOfBirth? DateOfBirth { get; init; }
 
+    public Gender Gender { get; init; } = new Gender(Genders.NotDefined);
 }
