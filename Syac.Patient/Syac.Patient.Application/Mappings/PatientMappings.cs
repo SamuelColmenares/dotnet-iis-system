@@ -34,7 +34,7 @@ public static class PatientMappings
     {
         var result = Enum.TryParse(
             typeof(Genders),
-            patientDataModel.ToString(),
+            patientDataModel.Gender.ToString(),
             out var genderObj);
 
         if (!result)

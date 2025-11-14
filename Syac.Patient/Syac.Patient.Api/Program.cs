@@ -3,7 +3,7 @@ using Syac.Patient.Application.Services.Interfaces;
 using Syac.Patient.Infraestructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -29,6 +29,9 @@ builder.Services
     .AddPatientRepository();
 
 #endregion
+
+
+var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI(opt =>

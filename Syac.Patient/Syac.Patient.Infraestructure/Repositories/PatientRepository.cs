@@ -17,7 +17,7 @@ public class PatientRepository(PatientsSqlServerContext dbContext) : IPatientRep
             throw new ApplicationException("Error adding patient to the database.");
         }
 
-        await dbContext.SaveChangesAsync();
+        await dbContext.SaveChangesAsync().ConfigureAwait(false);
 
         return result.Entity.Id;
     }
