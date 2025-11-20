@@ -1,0 +1,53 @@
+{
+  "id": null,
+  "title": "Runtime & Infrastructure - Syac Patients",
+  "schemaVersion": 38,
+  "version": 1,
+  "refresh": "5s",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "GC Pause Duration",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "rate(dotnet_gc_pause_time_seconds_sum[1m])",
+          "legendFormat": "pause time"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Active HTTP Requests",
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "sum(http_server_active_requests)",
+          "legendFormat": "active"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Thread Count",
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "dotnet_threadpool_threads",
+          "legendFormat": "threads"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Kestrel Request Queue",
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "sum(kestrel_request_queue_length)",
+          "legendFormat": "queue"
+        }
+      ]
+    }
+  ]
+}

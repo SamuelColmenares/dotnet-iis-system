@@ -1,0 +1,46 @@
+{
+  "id": null,
+  "title": "Database Performance - Syac - Patient",
+  "schemaVersion": 38,
+  "version": 1,
+  "refresh": "5s",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "DB Query Duration (p95)",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum by (le,query) (rate(syac_patient_db_query_duration_milliseconds_bucket[1m])))",
+          "legendFormat": "{{query}}"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "DB Query Duration (p50 & p99)",
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.50, sum by (le,query) (rate(syac_patient_db_query_duration_milliseconds_bucket[1m])))",
+          "legendFormat": "{{query}} p50"
+        },
+        {
+          "expr": "histogram_quantile(0.99, sum by (le,query) (rate(syac_patient_db_query_duration_milliseconds_bucket[1m])))",
+          "legendFormat": "{{query}} p99"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "DB Query Count",
+      "gridPos": { "x": 0, "y": 8, "w": 24, "h": 8 },
+      "targets": [
+        {
+          "expr": "sum by (query) (rate(identityui_db_query_duration_count[1m]))",
+          "legendFormat": "{{query}}"
+        }
+      ]
+    }
+  ]
+}

@@ -4,6 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.14.36623.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "orchestration", "orchestration", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		orchestration\api-performance.json = orchestration\api-performance.json
+		orchestration\db-performance.json = orchestration\db-performance.json
+		orchestration\docker-compose.yml = orchestration\docker-compose.yml
+		orchestration\otel-collector-config.yaml = orchestration\otel-collector-config.yaml
+		orchestration\otel-metrics.json = orchestration\otel-metrics.json
+		orchestration\prometheus.yml = orchestration\prometheus.yml
+		orchestration\runtime-performance.json = orchestration\runtime-performance.json
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{906861B9-6E64-45CB-8627-49C44E7E71EC}"
 EndProject

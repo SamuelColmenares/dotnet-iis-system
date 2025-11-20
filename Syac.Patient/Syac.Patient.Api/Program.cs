@@ -5,6 +5,7 @@ using OpenTelemetry.Trace;
 using Syac.Patient.Application.Services;
 using Syac.Patient.Application.Services.Interfaces;
 using Syac.Patient.Infraestructure.Extensions;
+using System.Diagnostics.Metrics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,7 @@ builder.Services.AddSwaggerGen();
 #region OTel
 
 var serviceName = "Syac.Patient.Api";
+builder.Services.AddInfrastructureMetrics();
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(resource =>
@@ -47,6 +49,12 @@ builder.Services.AddOpenTelemetry()
         .AddAspNetCoreInstrumentation()
         .AddHttpClientInstrumentation()
         .AddRuntimeInstrumentation()
+        .AddMeter("SyacPatientApi.AppMetrics")
+        .AddMeter("Microsoft.AspNetCore.Hosting")
+        .AddMeter("Microsoft.AspNetCore.Server.Kestrel")
+        .AddMeter("Microsoft.AspNetCore.Routing")
+        .AddMeter("Microsoft.AspNetCore.Diagnostics")
+        .AddMeter("Microsoft.AspNetCore.Http")
         .AddOtlpExporter(o =>
         {
             o.Endpoint = new Uri("http://otel-collector:4317");

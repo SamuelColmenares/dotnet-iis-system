@@ -1,0 +1,64 @@
+{
+  "id": null,
+  "title": "OpenTelemetry Collector Metrics",
+  "schemaVersion": 38,
+  "version": 1,
+  "refresh": "5s",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Spans Accepted",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "sum(rate(otelcol_receiver_accepted_spans[1m]))",
+          "legendFormat": "accepted"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Logs Accepted",
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "sum(rate(otelcol_receiver_accepted_logs[1m]))",
+          "legendFormat": "logs"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Exporter Errors",
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "sum(rate(otelcol_exporter_send_failed[1m]))",
+          "legendFormat": "errors"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Bytes Sent",
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "sum(rate(otelcol_exporter_bytes_sent[1m]))",
+          "legendFormat": "bytes"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Exporter Queue Size",
+      "gridPos": { "x": 0, "y": 16, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "otelcol_exporter_queue_size",
+          "legendFormat": "queue"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "id": null,
+  "title": "API Performance - Identity.UI",
+  "schemaVersion": 38,
+  "version": 1,
+  "refresh": "5s",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Request Duration (p95)",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum by (le) (rate(http_server_request_duration_bucket[1m])))",
+          "legendFormat": "p95"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Request Duration (p50 & p99)",
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.50, sum by (le) (rate(http_server_request_duration_bucket[1m])))",
+          "legendFormat": "p50"
+        },
+        {
+          "expr": "histogram_quantile(0.99, sum by (le) (rate(http_server_request_duration_bucket[1m])))",
+          "legendFormat": "p99"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Requests per Second (RPS)",
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "sum(rate(http_server_request_duration_count[1m]))",
+          "legendFormat": "RPS"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Exceptions",
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "sum(rate(exceptions_total[1m]))",
+          "legendFormat": "exceptions"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Routing Success per Route",
+      "gridPos": { "x": 0, "y": 16, "w": 24, "h": 8 },
+      "targets": [
+        {
+          "expr": "sum by (http_route) (rate(aspnetcore_routing_match_attempts_total[1m]))",
+          "legendFormat": "{{http_route}}"
+        }
+      ]
+    }
+  ]
+}

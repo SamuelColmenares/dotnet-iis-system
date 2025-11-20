@@ -2,23 +2,23 @@
 using Syac.Patient.Domain.Repositories;
 using Syac.Patient.Infraestructure.Contexts;
 using Syac.Patient.Infraestructure.Mappings;
+using Syac.Patient.Infraestructure.Metrics;
 
 namespace Syac.Patient.Infraestructure.Repositories;
 
-public class PatientRepository(PatientsSqlServerContext dbContext) : IPatientRepository
+public class PatientRepository(PatientsSqlServerContext dbContext, DbMetricsService metrics) : IPatientRepository
 {
     public async Task<Guid> AddAsync(PatientAggregate patient)
     {
         var patientDto = patient.ToDto();
         var result = await dbContext.Patients.AddAsync(patientDto);
 
-        if(result is null || result.Entity.Id == Guid.Empty)
+        if (result is null || result.Entity.Id == Guid.Empty)
         {
             throw new ApplicationException("Error adding patient to the database.");
         }
 
-        await dbContext.SaveChangesAsync().ConfigureAwait(false);
-
+        await metrics.Measure(() => dbContext.SaveChangesAsync(), "Patient.AddAsync");
         return result.Entity.Id;
     }
 
