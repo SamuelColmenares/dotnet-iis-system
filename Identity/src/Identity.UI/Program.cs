@@ -3,11 +3,16 @@ using Azure.Identity;
 using Identity.UI.Aggregates;
 using Identity.UI.DBContexts;
 using Identity.UI.Dtos;
+using Identity.UI.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Syac.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<AzureKevaultInfo>(builder.Configuration.GetSection("AzureKeyVaultInfo"));
+builder.Services.AddSyacCommonHttp(builder.Configuration);
+builder.Services.AddScoped<ProfessionalService>();
+builder.Services.AddSyacCache(builder.Configuration);
 
 if (builder.Environment.IsProduction())
 {

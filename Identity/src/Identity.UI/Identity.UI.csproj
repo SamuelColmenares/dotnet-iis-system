@@ -26,4 +26,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Syac.Common">
+      <HintPath>..\..\..\Syac.Common\Syac.Common\bin\Debug\net9.0\Syac.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
